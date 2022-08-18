@@ -21,6 +21,14 @@ Generate new application security token:
 
 `php artisan key:generate`
 
+Run database migrations:
+`docker exec -it project_app bash`
+`php artisan migrate`
+
+Seed the database:
+`docker exec -it project_app bash`
+`php artisan db:seed`
+
 Server: `localhost:8876`
 
 
