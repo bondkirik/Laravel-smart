@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Categories</h1>
+        <h1>{{ __('Categories') }}</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -12,22 +12,22 @@
                     #
                 </th>
                 <th>
-                    Code
+                    {{ __('Code') }}
                 </th>
                 <th>
-                    Name
+                    {{ __('Name') }}
                 </th>
                 <th>
-                    Category
+                    {{ __('Category') }}
                 </th>
                 <th>
-                    Price
+                    {{ __('Price') }}
                 </th>
                 <th>
-                    Qty
+                    {{ __('Qty') }}
                 </th>
                 <th>
-                    Options
+                    {{ __('Options') }}
                 </th>
             </tr>
             @foreach($products as $product)
@@ -41,8 +41,8 @@
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">
-                                <a class="btn btn-success" type="button" href="{{ route('products.show', $product) }}">Open</a>
-                                <a class="btn btn-warning" type="button" href="{{ route('products.edit', $product) }}">Edit</a>
+                                <a class="btn btn-success" type="button" href="{{ route('products.show', $product) }}">{{ __('Open') }} </a>
+                                <a class="btn btn-warning" type="button" href="{{ route('products.edit', $product) }}">{{ __('Edit') }} </a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="remove">
@@ -54,6 +54,6 @@
             </tbody>
         </table>
         <a class="btn btn-success" type="button"
-           href="{{ route('products.create') }}">Add Product</a>
+           href="{{ route('products.create') }}">{{ __('Add Service') }}</a>
     </div>
 @endsection

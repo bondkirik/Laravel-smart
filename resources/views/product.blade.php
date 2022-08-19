@@ -5,12 +5,14 @@
 @section('content')
     <h1>{{ $product->name }}</h1>
     <h2>{{ $product->category->name }}</h2>
-    <p>Price: <b>{{ $product->price }} EUR.</b></p>
+    <p>{{ __('Price') }}: <b>{{ $product->price }} {{ __('EUR') }}.</b></p>
     <p>{{ $product->description }}</p>
-    <form action="" method="POST">
-
-            <button type="submit" class="btn btn-primary" role="button">Buy</button>
-
+    <form action="{{ route('basket-add', $product) }}" method="POST">
+        @if($product->isAvailable())
+            <button type="submit" class="btn btn-primary" role="button">{{ __('Buy') }}</button>
+        @else
+            {{ __('Not Available') }}
+        @endif
         @csrf
     </form>
 @endsection

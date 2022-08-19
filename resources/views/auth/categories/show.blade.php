@@ -9,30 +9,30 @@
             <tbody>
             <tr>
                 <th>
-                    Field
+                    {{ __('Field') }}
                 </th>
                 <th>
-                    Name
+                    {{ __('Field') }}
                 </th>
             </tr>
             <tr>
-                <td>ID</td>
+                <td>{{ __('ID') }}</td>
                 <td>{{ $category->id }}</td>
             </tr>
             <tr>
-                <td>Code</td>
+                <td>{{ __('Code') }}</td>
                 <td>{{ $category->code }}</td>
             </tr>
             <tr>
-                <td>Name</td>
+                <td>{{ __('Name') }}</td>
                 <td>{{ $category->name }}</td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td>{{ __('Description') }}</td>
                 <td>{{ $category->description }}</td>
             </tr>
             <tr>
-                <td>Qty of goods</td>
+                <td>{{ __('Qty of goods') }}</td>
                 <td>{{ $category->products->count() }}</td>
             </tr>
             </tbody>

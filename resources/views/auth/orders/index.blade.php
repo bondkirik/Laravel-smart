@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Order</h1>
+        <h1>{{ __('Order') }}</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -42,7 +42,7 @@
                                @else
                                href="{{ route('person.orders.show', $order) }}"
                                @endadmin
-                            >Open</a>
+                            >{{ __('Open') }}</a>
                         </div>
                     </td>
                 </tr>

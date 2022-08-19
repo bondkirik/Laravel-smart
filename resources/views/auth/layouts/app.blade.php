@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="/js/app.js" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ __('My Shop') }}
+                    {{ __('Back My Shop') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,13 +35,13 @@
                     <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                         @admin
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+                            <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('products.index') }}">Services</a>
+                            <a class="nav-link" href="{{ route('products.index') }}">{{ __('Services') }}</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home') }}">Orders</a>
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Orders') }}</a>
                         </li>
                         @endadmin
                     </ul>
@@ -62,7 +63,8 @@
                                 </li>
                             @endif
                         @else
-                            <li><a class="nav-link" href="{{ route('get-logout') }}">{{ Auth::user()->name }} {{ __('Exit') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('person.orders.index') }}">{{ __('My Orders') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('get-logout') }}">{{ Auth::user()->name }} {{ __('Logout') }}</a></li>
                         @endguest
                     </ul>
                 </div>

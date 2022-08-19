@@ -28,10 +28,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                     <li class="nav-item @active('index')" >
-                        <a class="nav-link" href="{{ route('index') }}">{{ __('Service') }}</a>
+                        <a class="nav-link" href="{{ route('index') }}">{{ __('Services') }}</a>
                     </li>
                     <li class="nav-item @active('categor*')">
                         <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
+                    </li>
+                    <li class="nav-item @active('basket')">
+                        <a class="nav-link" href="{{ route('basket') }}">{{ __('Basket') }}</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
@@ -64,6 +67,12 @@
 
     <main class="py-4">
         <div class="container">
+            @if(session()->has('success'))
+                <p class="alert alert-success">{{ session()->get('success') }}</p>
+            @endif
+            @if(session()->has('warning'))
+                <p class="alert alert-warning">{{ session()->get('warning') }}</p>
+            @endif
             @yield('content')
         </div>
     </main>

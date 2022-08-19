@@ -9,9 +9,9 @@
 @section('content')
     <div class="col-md-12">
         @isset($category)
-            <h1>Edit category <b>{{ $category->name }}</b></h1>
+            <h1>{{ __('Edit category') }} <b>{{ $category->name }}</b></h1>
         @else
-            <h1>Add category</h1>
+            <h1>{{ __('Add category') }}</h1>
         @endisset
 
         <form method="POST" enctype="multipart/form-data"
@@ -27,7 +27,7 @@
                 @endisset
                 @csrf
                 <div class="input-group row">
-                    <label for="code" class="col-sm-2 col-form-label">code: </label>
+                    <label for="code" class="col-sm-2 col-form-label">{{ __('code') }}: </label>
                     <div class="col-sm-6">
                         @error('code')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -38,7 +38,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Name: </label>
+                    <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}: </label>
                     <div class="col-sm-6">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -49,7 +49,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Description: </label>
+                    <label for="description" class="col-sm-2 col-form-label">{{ __('Description') }}: </label>
                     <div class="col-sm-6">
                         @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -59,15 +59,8 @@
                     </div>
                 </div>
                 <br>
-{{--                <div class="input-group row">--}}
-{{--                    <label for="image" class="col-sm-2 col-form-label">Image: </label>--}}
-{{--                    <div class="col-sm-10">--}}
-{{--                        <label class="btn btn-default btn-file">--}}
-{{--                            Загрузить <input type="file" style="display: none;" name="image" id="image">--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <button class="btn btn-success">Save</button>
+
+                <button class="btn btn-success">{{ __('Save') }}</button>
             </div>
         </form>
     </div>

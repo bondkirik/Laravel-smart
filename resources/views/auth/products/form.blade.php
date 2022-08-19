@@ -9,9 +9,9 @@
 @section('content')
     <div class="col-md-12">
         @isset($product)
-            <h1>Edit category <b>{{ $product->name  }}</b></h1>
+            <h1>{{ __('Edit category') }}<b>{{ $product->name  }}</b></h1>
         @else
-            <h1>Add category</h1>
+            <h1>{{ __('Add category') }}</h1>
         @endisset
 
         <form method="POST" enctype="multipart/form-data"
@@ -27,7 +27,7 @@
                 @endisset
                 @csrf
                 <div class="input-group row">
-                    <label for="code" class="col-sm-2 col-form-label">code: </label>
+                    <label for="code" class="col-sm-2 col-form-label">{{ __('code') }}: </label>
                     <div class="col-sm-6">
                         @error('code')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -38,7 +38,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Name: </label>
+                    <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}: </label>
                     <div class="col-sm-6">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -49,7 +49,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Description: </label>
+                    <label for="description" class="col-sm-2 col-form-label">{{ __('Description') }}: </label>
                     <div class="col-sm-6">
                         @error('description')
                         <div class="alert alert-danger">{{ $product }}</div>
@@ -60,20 +60,20 @@
                 </div>
                 <br>
                     <div class="input-group row">
-                        <label for="price" class="col-sm-2 col-form-label">Цена: </label>
+                        <label for="price" class="col-sm-2 col-form-label">{{ __('Price') }}: </label>
                         <div class="col-sm-2">
                             <input type="text" class="form-control" name="price" id="price"
                                    value="@isset($product){{ $product->price }}@endisset">
                         </div>
                     </div>
                     <div class="input-group row">
-                        <label for="count" class="col-sm-2 col-form-label">Qty: </label>
+                        <label for="count" class="col-sm-2 col-form-label">{{ __('Qty') }}: </label>
                         <div class="col-sm-2">
                             <input type="text" class="form-control" name="count" id="count"
                                    value="@isset($product){{ $product->count }}@endisset">
                         </div>
                     </div>
-                <button class="btn btn-success">Save</button>
+                <button class="btn btn-success">{{ __('Save') }}</button>
             </div>
         </form>
     </div>

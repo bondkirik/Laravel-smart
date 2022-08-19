@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Categories</h1>
+        <h1>{{ __('Categories') }}</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -12,13 +12,13 @@
                     #
                 </th>
                 <th>
-                    Code
+                    {{ __('Code') }}
                 </th>
                 <th>
-                    Name
+                    {{ __('Name') }}
                 </th>
                 <th>
-                    Options
+                    {{ __('Options') }}
                 </th>
             </tr>
             @foreach($categories as $category)
@@ -29,8 +29,8 @@
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('categories.destroy', $category) }}" method="POST">
-                                <a class="btn btn-success" type="button" href="{{ route('categories.show', $category) }}">Open</a>
-                                <a class="btn btn-warning" type="button" href="{{ route('categories.edit', $category) }}">Edit</a>
+                                <a class="btn btn-success" type="button" href="{{ route('categories.show', $category) }}">{{ __('Open') }}</a>
+                                <a class="btn btn-warning" type="button" href="{{ route('categories.edit', $category) }}">{{ __('Edit') }}</a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="remove"></form>
@@ -41,6 +41,6 @@
             </tbody>
         </table>
         <a class="btn btn-success" type="button"
-           href="{{ route('categories.create') }}">Add category</a>
+           href="{{ route('categories.create') }}">{{ __('Add category') }}</a>
     </div>
 @endsection
