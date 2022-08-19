@@ -18,4 +18,13 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function calculateFullSum()
+    {
+        $sum = 0;
+        foreach ($this->products()->withTrashed()->get() as $product) {
+            $sum += $product->getPriceForCount();
+        }
+        return $sum;
+    }
 }

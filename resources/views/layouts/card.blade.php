@@ -5,11 +5,11 @@
             <p class="card-text">{{ $product->description }}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item ">{{ $product->price }} EUR.</li>
+            <li class="list-group-item ">{{ $product->price }} {{ __('EUR') }}.</li>
         </ul>
         <div class="card-body">
             <form action="" method="POST">
-                <button type="submit" class="btn btn-primary" role="button">Buy</button>
+                <button type="submit" class="btn btn-primary" role="button">{{ __('Buy') }}</button>
                 <a class="btn btn-info"
                    href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}"
                    role="button">Info</a>

@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="/js/app.js" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,15 +23,15 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('index') }}">My Shop</a>
+            <a class="navbar-brand" href="{{ route('index') }}">{{ __('My Shop') }}</a>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                     <li class="nav-item @active('index')" >
-                        <a class="nav-link" href="{{ route('index') }}">Services</a>
+                        <a class="nav-link" href="{{ route('index') }}">{{ __('Service') }}</a>
                     </li>
                     <li class="nav-item @active('categor*')">
-                        <a class="nav-link" href="{{ route('categories') }}">Categories</a>
+                        <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
@@ -48,25 +48,15 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
                     @endguest
+                    @auth
+                        @admin
+                        <li><a class="nav-link" href="{{ route('home') }}">{{ __('Admin') }}</a></li>
+                        @else
+                        <li><a class="nav-link" href="{{ route('person.orders.index') }}">{{ __('My Orders') }}</a></li>
+                        @endadmin
+                        <li><a class="nav-link" href="{{ route('get-logout') }}">{{ __('Logout') }}</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
