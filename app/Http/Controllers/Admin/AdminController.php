@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function show(Order $order)
     {
-        $products = $order->products()->get();
+        $products = $order->products()->withTrashed()->get();
         return view('auth.orders.show', compact('order', 'products'));
     }
 }

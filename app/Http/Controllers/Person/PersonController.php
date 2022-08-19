@@ -17,7 +17,8 @@ class PersonController extends Controller
 
     public function show(Order $order)
     {
-        $showOrder = Auth::user()->orders()->contains($order);
+        $showOrder = Auth::user()->orders->contains($order);
+
         if (!$showOrder) {
             return back();
         }

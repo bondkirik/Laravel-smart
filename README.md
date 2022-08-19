@@ -7,6 +7,7 @@ Clone the project from git repository:
 Install dependencies:
 
 `composer install`
+`npm install`
 
 Copy ".env.example" to ".env" file:
 
@@ -31,5 +32,16 @@ Seed the database:
 
 Server: `localhost:8876`
 
+Admin:
+email `admin@gmail.com`
+password `Qwerty_1`
+
+Shop where user can buy service
+
+Admin can add,edit,remove categories and service
+Admin have all orders.
+
+users can register or place your order without registration
+if user register user have self orders
 
 

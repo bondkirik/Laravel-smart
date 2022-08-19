@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Person\PersonController;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
         'as' => 'person.',
     ], function () {
         Route::get('/orders', [PersonController::class, 'index'])->name('orders.index');
-        Route::get('/orders/{order}', [PersonController::class, 'index'])->name('orders.show');
+        Route::get('/orders/{order}', [PersonController::class, 'show'])->name('orders.show');
     });
 
     Route::group([
@@ -51,5 +52,19 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+
+Route::group(['prefix' => 'basket'], function () {
+    Route::post('/add/{product}', [BasketController::class,'basketAdd'])->name('basket-add');
+    Route::group([
+        'middleware' => 'basket_not_empty',
+    ], function (){
+        Route::get('/', [BasketController::class,'basket'])->name('basket');
+        Route::get('/place', [BasketController::class,'basketPlace'])->name('basket-place');
+        Route::post('/remove/{product}', [BasketController::class,'basketRemove'])->name('basket-remove');
+        Route::post('/place', [BasketController::class,'basketConfirm'])->name('basket-confirm');
+    });
+});
+
+
 Route::get('/{category}', [MainController::class, 'category'])->name('category');
 Route::get('/{category}/{product?}', [MainController::class, 'product'])->name('product');

@@ -21,6 +21,19 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function saveOrder($name, $phone)
+    {
+        if ($this->status == 0) {
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->status = 1;
+            $this->save();
+            session()->forget('orderId');
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function calculateFullSum()
     {
         $sum = 0;
@@ -28,5 +41,21 @@ class Order extends Model
             $sum += $product->getPriceForCount();
         }
         return $sum;
+    }
+
+    public static function eraseOrderSum()
+    {
+        session()->forget('full_order_sum');
+    }
+
+    public static function changeFullSum($changeSum)
+    {
+        $sum = self::getFullSum() + $changeSum;
+        session(['full_order_sum' => $sum]);
+    }
+
+    public static function getFullSum()
+    {
+        return session('full_order_sum', 0);
     }
 }
