@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Person\PersonController;
@@ -42,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/orders', [AdminController::class, 'index'])->name('home');
             Route::get('/orders/{order}', [AdminController::class, 'show'])->name('orders.show');
         });
+        Route::resource('categories', CategoryController::class);
+        Route::resource('products', ProductController::class);
     });
 });
 

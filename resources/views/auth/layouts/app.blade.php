@@ -32,9 +32,17 @@
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                        @admin
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('products.index') }}">Services</a>
+                        </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('home') }}">Orders</a>
                         </li>
+                        @endadmin
                     </ul>
 
                     <!-- Right Side Of Navbar -->

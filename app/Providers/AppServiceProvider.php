@@ -28,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function () {
             return Auth::check() && Auth::user()->isAdmin();
         });
+
+        Blade::directive('active', function ($route) {
+            return "<?php echo Route::currentRouteNamed($route) ? 'active' : '' ?>";
+        });
     }
 }
